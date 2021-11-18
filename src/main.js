@@ -11,7 +11,6 @@ import './assets/css/form.css';
 import './assets/css/bootstrap.min.css';
 import './assets/css/font-awesome.min.css';
 import './assets/css/auth.css';
-import 'vue-multiselect/dist/vue-multiselect.min.css';
 
 var Paginate = require('vuejs-paginate')
 Vue.component('paginate', Paginate)
@@ -19,11 +18,7 @@ import VueConfirmDialog from 'vue-confirm-dialog'
 Vue.use(VueConfirmDialog)
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-import Autocomplete from 'v-autocomplete'
-import 'v-autocomplete/dist/v-autocomplete.css'
-import Multiselect from 'vue-multiselect'
 import excel from 'vue-excel-export'
-Vue.component('multiselect', Multiselect)
 Vue.use(Autocomplete)
 Vue.use(excel)
 Vue.config.productionTip = false
