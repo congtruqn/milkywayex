@@ -2,17 +2,17 @@ steps:
 # build
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', 
-  '--tag=gcr.io/$PROJECT_ID/milkywayex-nginx:$BRANCH_NAME', "."]
+  '--tag=gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME', "."]
 # push
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/milkywayex-nginx:$BRANCH_NAME']
+  args: ['push', 'gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME']
 
 # deploy
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['run', 'deploy', 
   '$BRANCH_NAME-milkywayex', 
   '--project=brights-bros', 
-  '--image=gcr.io/$PROJECT_ID/milkywayex-nginx:$BRANCH_NAME', 
+  '--image=gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME', 
   '--memory=256M', '--port=80', '--cpu=1', '--timeout=900', 
   '--platform=managed', '--allow-unauthenticated', '--region=asia-northeast1']
 
