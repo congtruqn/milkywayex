@@ -12,14 +12,12 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['run', 'deploy', 
   '$BRANCH_NAME-dot-components', 
-  '--project=brights-bros', 
   '--image=gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME', 
   '--port=80', '--timeout=900',
   '--allow-unauthenticated', '--region=asia-northeast1']
 
 # policy
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'services', 'add-iam-policy-binding', 
-  '--project=brights-bros','--platform=managed', 
+  args: ['run', 'services', 'add-iam-policy-binding',  
   '--region=asia-northeast1', '$BRANCH_NAME-dot-components', '--member=allUsers', '--role=roles/run.invoker']
 timeout: "1600s"
