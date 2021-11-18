@@ -1,24 +1,14 @@
-# build
+steps:
+  # build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', 
-  '--tag=gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME',
-  "."]
-# push
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/milkywayex:$BRANCH_NAME', '.']
+  # push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME']
-
-# deploy
+  args: ['push', 'gcr.io/$PROJECT_ID/milkywayex:$BRANCH_NAME']
+  # deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 
-  '$BRANCH_NAME-dot-components-nginx-dot-brights-bros', 
-  '--project=brights-bros', 
-  '--image=gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME', 
-  '--memory=256M', '--port=80', '--cpu=1', '--timeout=900', 
-  '--platform=managed', '--allow-unauthenticated', '--region=asia-northeast1']
-
-# policy
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'services', 'add-iam-policy-binding', 
-  '--project=brights-bros','--platform=managed', 
-  '--region=asia-northeast1', '$BRANCH_NAME-dot-components-nginx-dot-brights-bros', '--member=allUsers', '--role=roles/run.invoker']
-timeout: "1600s"
+  args: ['run', 'deploy', 'milkywayex', '--image', 'gcr.io/$PROJECT_ID/milkywayex:$BRANCH_NAME', '--region', 'asia-northeast1', '--allow-unauthenticated']
+  env:
+  - 'PORT=80'
+images:
+- gcr.io/$PROJECT_ID/milkywayex
