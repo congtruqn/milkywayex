@@ -3,7 +3,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', 
   '--tag=gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME', 
-  '--file=services/components-nginx/Dockerfile', "."]
+  "."]
 # push
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/components-nginx:$BRANCH_NAME']
