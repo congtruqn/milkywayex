@@ -1,3 +1,4 @@
+steps:
 # build
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', 
