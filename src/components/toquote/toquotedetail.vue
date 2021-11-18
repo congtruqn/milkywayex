@@ -42,18 +42,6 @@
               >
                 <td>{{ invoicetype.count }}</td>
                 <td>
-                  <v-autocomplete
-                    :items="items"
-                    v-model="listproducts[newindex].name"
-                    :get-label="getLabel"
-                    :component-item="template"
-                    @update-items="updateItems"
-                    ref="autocomplete"
-                    @blur="event => changeLabel(event, newindex)"
-                    @change="event => onChange(event, newindex)"
-                    @item-clicked ="event => selectLabel(event, newindex)"
-                  >
-                  </v-autocomplete>
                 </td>
                 <td>
                   <multiselect

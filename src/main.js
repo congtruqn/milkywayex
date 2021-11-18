@@ -19,7 +19,6 @@ Vue.use(VueConfirmDialog)
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 import excel from 'vue-excel-export'
-Vue.use(Autocomplete)
 Vue.use(excel)
 Vue.config.productionTip = false
 Vue.prototype.$http = Axios
