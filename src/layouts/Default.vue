@@ -1,13 +1,15 @@
 <template>
     <div class="wrapper" id="wrapper">
-      <header class="header navbar navbar-default navbar-fixed-top ng-scope" id="header">
-        <AdminHeader />
+      <header class="header" id="header">
+        <div class="container">
+          <AdminHeader />
+        </div>
       </header>
-      <div class="sidebar ng-scope leftmenu1" ng-class="{ 'sidebar-transparent': setting.layout.pageSidebarTransparent }" id="sidebar">
-        <AdminMenu />
-      </div>
+
       <div class="content content1">
-        <router-view />
+        <div class="container">
+          <router-view />
+        </div>
       </div>
     </div>
 </template>
