@@ -13,7 +13,8 @@
       </ul>
     </div>
     <div class="connect_wallet">
-      <p><a href="#" class="navbar-brand1" @click="login">Connect Wallet</a></p>
+      <p v-if="address == null"><a href="#" class="navbar-brand1" @click="login">Connect Wallet</a></p>
+      <p v-if="address !== null"><a href="#" class="navbar-brand1">{{address}}</a></p>
     </div>
   </div>
 </div>
@@ -27,7 +28,8 @@
     data () {
       return {
         isShow:false,
-        isShowLang:false
+        isShowLang:false,
+        address:null
       }
     },
     created: async function() {
@@ -35,6 +37,7 @@
         await initWeb3();
         this.isLoginButtonDisabled = false;
         this.observe();
+        this.address = await getAddress();
       }
       catch (e) {
         console.log(e)
