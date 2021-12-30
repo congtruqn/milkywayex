@@ -166,6 +166,6 @@ export default {
       .then(response => (this.listinvoicetypes = response.data));
       this.$http.get('api/user/getcountuser',{headers: {'Authorization': `Basic ${localStorage.getItem('token')}` }})
         .then(response => (this.countinvoicetype = response.data.numofcompany));
-    },
+  },
 };
 </script>
